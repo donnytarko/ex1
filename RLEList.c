@@ -10,12 +10,43 @@ struct RLEList_t{
     struct RLEList_t* next;
 };
 
+RLEList RLEListCreate(){
+    RLEList list = malloc(sizeof(*list));
+	if(!list) {
+		return NULL;
+	}
+	list->next = NULL;
+	return list;
+};
+
 void RLEListDestroy(RLEList list) {
     while(list) {
         RLEList listToDelete = list;
         list = list->next;
         free(listToDelete);
     }
+};
+
+RLEListResult RLEListAppend(RLEList list, char value) {
+    if (list == NULL || value == NULL)
+        return RLE_LIST_NULL_ARGUMENT;
+    RLEList currentList = list;
+    while(currentList->next) {
+        currentList = currentList->next;
+    }
+    if (currentList->letter == value) {
+        currentList->repetitions++;
+    }
+    else {
+        RLEList newList = malloc(sizeof(*newList));
+        if(!newList)
+		    return RLE_LIST_OUT_OF_MEMORY;
+        newList->letter = value;
+        newList->repetitions = 1;
+        newList->next = NULL;
+        currentList->next = newList;
+    }
+    return RLE_LIST_SUCCESS;
 };
 
 int RLEListSize(RLEList list) {
