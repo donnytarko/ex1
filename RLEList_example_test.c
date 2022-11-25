@@ -90,17 +90,21 @@ char RLEListGet(RLEList list, int index, RLEListResult *result) {
             *result = RLE_LIST_NULL_ARGUMENT;
         return (0);
     }
-    for (int i = 0; i < index; i++) {
-        if (list->next == NULL) {
+    int i = 0;
+    RLEList currentList = list;
+    while (i + currentList->repetitions < index) {
+        if (currentList->next == NULL) {
             if (result)
                 *result = RLE_LIST_INDEX_OUT_OF_BOUNDS;
             return (0);
         }
-        list = list->next;
+        i += currentList->repetitions;
+        currentList = currentList->next;
+        
     }
     if (result)
         *result = RLE_LIST_SUCCESS;
-    return (list->letter);
+    return (currentList->letter);
 }
 
 char* RLEListExportToString(RLEList list, RLEListResult* result) {
