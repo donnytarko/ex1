@@ -54,7 +54,7 @@ void RLEListDestroy(RLEList list) {
 }
 
 RLEListResult RLEListAppend(RLEList list, char value) {
-    if (list == NULL || value == NULL)
+    if (list == NULL || !value)
         return RLE_LIST_NULL_ARGUMENT;
     RLEList currentList = list;
     while(currentList->next) {
