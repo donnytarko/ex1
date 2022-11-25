@@ -177,7 +177,7 @@ bool basicTest(){
     //ASSERT_TEST(RLEListRemove(list, 1) == RLE_LIST_SUCCESS, destroy); // abababaaa
 
     // check if the represented string is "abababaaa"
-    const char *s = "abababaaa";
+    const char *s = "acbababaaa";
     char it;
     for(int i=0; i<RLEListSize(list); i++)
     {
