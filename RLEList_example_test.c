@@ -30,7 +30,6 @@ static int number_of_tests = sizeof(tests) / sizeof(tests[0]);
 
 
 
-
 struct RLEList_t{
     int repetitions;
     char letter;
@@ -44,7 +43,7 @@ RLEList RLEListCreate(){
 	}
 	list->next = NULL;
 	return list;
-};
+}
 
 void RLEListDestroy(RLEList list) {
     while(list) {
@@ -52,7 +51,7 @@ void RLEListDestroy(RLEList list) {
         list = list->next;
         free(listToDelete);
     }
-};
+}
 
 RLEListResult RLEListAppend(RLEList list, char value) {
     if (list == NULL || value == NULL)
@@ -74,7 +73,7 @@ RLEListResult RLEListAppend(RLEList list, char value) {
         currentList->next = newList;
     }
     return RLE_LIST_SUCCESS;
-};
+}
 
 int RLEListSize(RLEList list) {
     int count = 0;
@@ -83,7 +82,7 @@ int RLEListSize(RLEList list) {
         list = list->next;
     }
     return (count);
-};
+}
 
 char RLEListGet(RLEList list, int index, RLEListResult *result) {
     if (!list) {
@@ -99,7 +98,7 @@ char RLEListGet(RLEList list, int index, RLEListResult *result) {
     }
     *result = RLE_LIST_SUCCESS;
     return (list->letter);
-};
+}
 
 char* RLEListExportToString(RLEList list, RLEListResult* result) {
     if (!list) {
@@ -118,12 +117,7 @@ char* RLEListExportToString(RLEList list, RLEListResult* result) {
     }
     *result = RLE_LIST_SUCCESS;
     return (string);
-};
-
-
-
-
-
+}
 
 
 
