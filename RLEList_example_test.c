@@ -86,23 +86,27 @@ int RLEListSize(RLEList list) {
 
 char RLEListGet(RLEList list, int index, RLEListResult *result) {
     if (!list) {
-        *result = RLE_LIST_NULL_ARGUMENT;
+        if (result)
+            *result = RLE_LIST_NULL_ARGUMENT;
         return (0);
     }
     for (int i = 0; i < index; i++) {
         if (list->next == NULL) {
-            *result = RLE_LIST_INDEX_OUT_OF_BOUNDS;
+            if (result)
+                *result = RLE_LIST_INDEX_OUT_OF_BOUNDS;
             return (0);
         }
         list = list->next;
     }
-    *result = RLE_LIST_SUCCESS;
+    if (result)
+        *result = RLE_LIST_SUCCESS;
     return (list->letter);
 }
 
 char* RLEListExportToString(RLEList list, RLEListResult* result) {
     if (!list) {
-        *result = RLE_LIST_NULL_ARGUMENT;
+        if (result)
+            *result = RLE_LIST_NULL_ARGUMENT;
         return NULL;
     }
     char* string = malloc(1);
@@ -115,7 +119,8 @@ char* RLEListExportToString(RLEList list, RLEListResult* result) {
         size+=3;
         list = list->next;
     }
-    *result = RLE_LIST_SUCCESS;
+    if (result)
+        *result = RLE_LIST_SUCCESS;
     return (string);
 }
 
