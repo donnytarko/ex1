@@ -5,6 +5,8 @@
 #include "AsciiArtTool.h"
 #include "RLEList.h"
 
+#define CHUNK_SIZE 1
+
 struct RLEList_t{
     int repetitions;
     char letter;
@@ -13,12 +15,12 @@ struct RLEList_t{
 
 RLEList asciiArtRead(FILE* in_stream) {
     RLEList list = RLEListCreate();
-    char* buffer;
+    char buffer[CHUNK_SIZE];
     int i = 0;
-    while(buffer[0] = buffer[i]) {
-        fgets(buffer, i, in_stream);
-    }
-    RLEListAppend(list, buffer);
+    while (fgets(buffer, CHUNK_SIZE, in_stream) != NULL) {
+        RLEListAppend(list, *buffer);
+	}
+    return list;
 };
 
 RLEListResult asciiArtPrint(RLEList list, FILE *out_stream){
@@ -47,6 +49,8 @@ RLEListResult asciiArtPrintEncoded(RLEList list, FILE *out_stream){
     if (!string) 
         return RLE_LIST_OUT_OF_MEMORY;
     RLEListResult *result = malloc(sizeof(RLEListResult));
+    if (!result) 
+        return RLE_LIST_OUT_OF_MEMORY;
     string = RLEListExportToString(list, result);
     fputs(string, out_stream);
     free(string);
