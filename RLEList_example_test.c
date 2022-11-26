@@ -106,6 +106,30 @@ char RLEListGet(RLEList list, int index, RLEListResult *result) {
     return (currentList->letter);
 }
 
+RLEListResult RLEListRemove(RLEList list, int index) {
+    if (!list)
+        return (RLE_LIST_NULL_ARGUMENT);
+    int i = -1;
+    RLEList currentList = list;
+    RLEList previousList;
+    while (i + currentList->repetitions < index) {
+        if (currentList->next == NULL) {
+            return (RLE_LIST_INDEX_OUT_OF_BOUNDS);
+        }
+        i += currentList->repetitions;
+        currentList = currentList->next;
+        previousList = currentList;
+    }
+    if (currentList->repetitions > 1) {
+        currentList->repetitions--;
+    }
+    else {
+        previousList->next = currentList->next;
+        free(currentList);
+    }
+    return (RLE_LIST_SUCCESS);
+}
+
 char* RLEListExportToString(RLEList list, RLEListResult* result) {
     if (!list) {
         if (result)
@@ -177,10 +201,10 @@ bool basicTest(){
     ASSERT_TEST(RLEListAppend(list, 'a') == RLE_LIST_SUCCESS, destroy);    // acbababaa
     ASSERT_TEST(RLEListAppend(list, 'a') == RLE_LIST_SUCCESS, destroy);    // acbababaaa
 
-    //ASSERT_TEST(RLEListRemove(list, 1) == RLE_LIST_SUCCESS, destroy); // abababaaa
+    ASSERT_TEST(RLEListRemove(list, 1) == RLE_LIST_SUCCESS, destroy); // abababaaa
 
     // check if the represented string is "abababaaa"
-    const char *s = "acbababaaa";
+    const char *s = "abababaaa";
     char it;
     for(int i=0; i<RLEListSize(list); i++)
     {
