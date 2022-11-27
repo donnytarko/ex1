@@ -13,14 +13,15 @@ int main(int argc, char** argv) {
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
     fprintf(stdout, "kkki\n");
-    RLEList list = asciiArtRead(inputFile);
     fprintf(stdout, "%s\n", argv[1]);
     fprintf(stdout, "%s\n", argv[2]);
     fprintf(stdout, "%s\n", argv[3]);
 
     if (strcmp(argv[FLAG],"-e") == 0) {
+        RLEList list = asciiArtRead(inputFile);
         fprintf(stdout, "now we here\n");
-        asciiArtPrintEncoded(list, outputFile);        
+        asciiArtPrintEncoded(list, outputFile);
+        RLEListDestroy(list);        
     }
     else {
         fprintf(stdout, "iii\n");
@@ -39,11 +40,11 @@ int main(int argc, char** argv) {
         }*/
         char buffer[CHUNK_SIZE];
 	    while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
+            fprintf(stdout, "ppppp\n");
 		    fputs(buffer, outputFile);
         }
     }
     fclose(inputFile);
     fclose(outputFile);
-    RLEListDestroy(list);
     return 0;
 }
