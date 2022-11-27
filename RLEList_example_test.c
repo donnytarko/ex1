@@ -68,6 +68,7 @@ RLEListResult RLEListAppend(RLEList list, char value) {
         newList->repetitions = 1;
         newList->next = NULL;
         currentList->next = newList;
+        fprintf(stdout, "appending: %c\n", value);
     }
     return RLE_LIST_SUCCESS;
 }
