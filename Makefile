@@ -1,12 +1,22 @@
-COMP_FLAG = -std=c99 -Wall -pedantic-errors -Werror -DNDEBUG -g
+CC = gcc
+OBJS = tool/AsciiArtTool.o tool/main.o RLEList.o
+EXEC = AsciiArtTool
+STD = -std=c99
+COMP_FLAG = -Wall -pedantic-errors -Werror
+DEBUG_FLAG = -DNDEBUG
+FILE_FLAG = -I/home/mtm/public/2223a/ex1 -Itool/
 
-prog: RLEList.o tool/AsciiArtTool.o tool/main.o
-	gcc RLEList.o tool/AsciiArtTool.o -o $@
-RLEList.o: RLEList.c RLEList.h
-	gcc -c ${COMP_FLAG} RLEList.c
-AsciiArtTool.o: tool/AsciiArtTool.c tool/AsciiArtTool.h RLEList.h
-	gcc -c ${COMP_FLAG} tool/AsciiArtTool.c
-main.o: tool/main.c tool/AsciiArtTool.h RLEList.h
-	gcc -c ${COMP_FLAG} tool/main.c
+$(EXEC) : $(OBJS)
+	$(CC) -o $@ $(DEBUG_FLAG) $(OBJS)
+
+tool/main.o : tool/main.c tool/AsciiArtTool.h RLEList.h
+	$(CC) $(STD) -c $(DEBUG_FLAG) $(FILE_FLAG) $(COMP_FLAG) $*.c -o $@
+
+RLEList.o : RLEList.c
+	$(CC) $(STD) -c $(DEBUG_FLAG) $(FILE_FLAG) $(COMP_FLAG) $*.c -o $@
+
+tool/AsciiArtTool.o : tool/AsciiArtTool.c tool/AsciiArtTool.h
+	$(CC) $(STD) -c $(DEBUG_FLAG) $(FILE_FLAG) $(COMP_FLAG) $*.c -o $@
+
 clean:
-	rm -f RLEList.o tool/AsciiArtTool.o tool/main.o $@
+	rm -f $(OBJS) $(EXEC)
