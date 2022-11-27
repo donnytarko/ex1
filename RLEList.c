@@ -118,7 +118,7 @@ char* RLEListExportToString(RLEList list, RLEListResult* result) {
     int numberOfNodes = 0;
     RLEList currentList = list->next;
         fprintf(stdout, "giant pp\n");
-    while(list) {
+    while(currentList) {
         numberOfNodes++;
         currentList = currentList->next;
     }
