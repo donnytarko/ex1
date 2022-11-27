@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
 
-    if (strcmp(argv[FLAG],"-e") == 0) {
+    if (argv[FLAG][1] == 'e') {
         RLEList list = asciiArtRead(inputFile);
         asciiArtPrintEncoded(list, outputFile);
         RLEListDestroy(list);        
