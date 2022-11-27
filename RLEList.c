@@ -19,6 +19,7 @@ RLEList RLEListCreate(){
 		return NULL;
 	}
 	list->next = NULL;
+    list->character = '\0';
     list->repetitions = 0;
 	return list;
 }
