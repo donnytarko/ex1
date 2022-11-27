@@ -41,6 +41,12 @@ int main(int argc, char** argv) {
         char buffer[CHUNK_SIZE];
 	    while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
             fprintf(stdout, "ppppp\n");
+            if (buffer[0] == ' ') {
+                buffer[0] = '@';
+            }
+            else if (buffer[0] == '@') {
+                buffer[0] = ' ';
+            }
 		    fputs(buffer, outputFile);
         }
     }
