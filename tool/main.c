@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
     RLEList list = asciiArtRead(inputFile);
     if (argv[FLAG] == "-e") {
-        RLEListResult result = asciiArtPrintEncoded(list, outputFile);        
+        asciiArtPrintEncoded(list, outputFile);        
     }
     else {
         char buffer[CHUNK_SIZE];
@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
             fputs(buffer, outputFile);
         }
     }
-    fclose(argv[INPUT_FILE]);
-    fclose(argv[OUTPUT_FILE]);
+    fclose(inputFile);
+    fclose(outputFile);
     return 0;
 }

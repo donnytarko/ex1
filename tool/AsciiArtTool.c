@@ -16,7 +16,6 @@ struct RLEList_t{
 RLEList asciiArtRead(FILE* in_stream) {
     RLEList list = RLEListCreate();
     char buffer[CHUNK_SIZE];
-    int i = 0;
     while (fgets(buffer, CHUNK_SIZE, in_stream) != NULL) {
         RLEListAppend(list, *buffer);
 	}
