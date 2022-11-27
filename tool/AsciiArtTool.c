@@ -30,7 +30,8 @@ RLEListResult asciiArtPrint(RLEList list, FILE *out_stream){
     RLEList currentList = list;
     RLEListResult *result = malloc(sizeof(RLEListResult));
     while (currentList) {
-        for (int i = 0; i < RLEListSize(currentList) - RLEListSize(currentList->next); i++){
+        int i;
+        for (i = 0; i < RLEListSize(currentList) - RLEListSize(currentList->next); i++){
             string[pointer + i] = RLEListGet(currentList, 0, result);
         }
         pointer += RLEListSize(currentList) - RLEListSize(currentList->next);

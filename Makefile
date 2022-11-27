@@ -1,4 +1,4 @@
-COMP_FLAG = -std=c99 -Wall -pedantic-errors -Werror -DNDEBUG -g -c
+COMP_FLAG = -std=c99 -Wall -pedantic-errors -Werror -DNDEBUG -g
 
 prog: RLEList.o tool/AsciiArtTool.o main.o
 	gcc RLEList.o tool/AsciiArtTool.o -o 
