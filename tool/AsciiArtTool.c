@@ -5,7 +5,7 @@
 #include "AsciiArtTool.h"
 #include "RLEList.h"
 
-#define CHUNK_SIZE 1
+#define CHUNK_SIZE 2
 
 struct RLEList_t{
     int repetitions;
