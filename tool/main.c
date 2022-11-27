@@ -18,11 +18,11 @@ int main(int argc, char** argv) {
         char buffer[CHUNK_SIZE];
         while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
             for (int i = 0; i < CHUNK_SIZE; i++) {
-                if (buffer[i] == " ") {
-                    buffer[i] = "@";
+                if (strcmp(buffer[i]," ")) {
+                    &buffer[i] = "@";
                 }
-                else if (buffer[i] == "@") {
-                    buffer[i] = " ";
+                else if (strcmp(buffer[i],"@")) {
+                    &buffer[i] = " ";
                 }
             }
             fputs(buffer, outputFile);
