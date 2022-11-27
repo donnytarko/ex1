@@ -9,14 +9,14 @@
 #define OUTPUT_FILE 3
 
 int main(int argc, char** argv) {
-    if (argc < 3) {
+    if (argc < 4) {
         return 0;
     }
     
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
 
-    if (strcmp(argv[1],"e") == 0) {
+    if (strcmp(argv[1],"-e") == 0) {
         RLEList list = asciiArtRead(inputFile);
         asciiArtPrintEncoded(list, outputFile);
         RLEListDestroy(list);        
