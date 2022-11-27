@@ -11,6 +11,11 @@
 int main(int argc, char** argv) {
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
+    fprintf(stdout, "%c", argv[FLAG][1]);
+    fprintf(stdout, "%s", argv[FLAG]);
+    fprintf(stdout, "%c", 'e');
+    fprintf(stdout, "%s", "-e");
+
 
     if (argv[FLAG][1] == 'e') {
         RLEList list = asciiArtRead(inputFile);
