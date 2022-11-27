@@ -2,7 +2,7 @@
 #ifndef ASCII_ART_TOOL_H
 #define ASCII_ART_TOOL_H
 
-#include "../RLEList.h"
+#include "./RLEList.h"
 
 RLEList asciiArtRead(FILE* in_stream);
 
