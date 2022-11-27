@@ -1,4 +1,4 @@
-COMP_FLAG = -std=c99 -Wall -pedantic-errors -Werror -DNDEBUG *.c tool/*.c
+COMP_FLAG = -std=c99 -o AsciiArtTool -I/home/mtm/public/2223a/ex1 -Itool -Wall -pedantic-errors -Werror -DNDEBUG *.c tool/*.c
 
 prog: RLEList.o AsciiArtTool.o main.o
 	gcc RLEList.o AsciiArtTool.o -o 
