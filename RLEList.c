@@ -38,7 +38,7 @@ RLEListResult RLEListAppend(RLEList list, char value) {
     while(currentList->next) {
         currentList = currentList->next;
     }
-    if (currentList->letter == value) {
+    if (currentList->repetitions > 0 && currentList->letter == value) {
         currentList->repetitions++;
     }
     else {
