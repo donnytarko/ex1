@@ -32,7 +32,7 @@ void RLEListDestroy(RLEList list) {
 RLEListResult RLEListAppend(RLEList list, char value) {
     if (list == NULL || !value)
         return RLE_LIST_NULL_ARGUMENT;
-    RLEList currentList = list->next;
+    RLEList currentList = list;
     while(currentList->next) {
         currentList = currentList->next;
     }
@@ -67,7 +67,7 @@ char RLEListGet(RLEList list, int index, RLEListResult *result) {
         return (0);
     }
     int i = -1;
-    RLEList currentList = list->next;
+    RLEList currentList = list;
     while (i + currentList->repetitions < index) {
         if (currentList->next == NULL) {
             if (result)
@@ -86,7 +86,7 @@ RLEListResult RLEListRemove(RLEList list, int index) {
     if (!list)
         return (RLE_LIST_NULL_ARGUMENT);
     int i = -1;
-    RLEList currentList = list->next;
+    RLEList currentList = list;
     RLEList previousList;
     while (i + currentList->repetitions < index) {
         if (currentList->next == NULL) {
@@ -101,7 +101,7 @@ RLEListResult RLEListRemove(RLEList list, int index) {
     }
     else {
         previousList->next = currentList->next;
-        free(currentList);
+        free(currentList)
     }
     return (RLE_LIST_SUCCESS);
 }
