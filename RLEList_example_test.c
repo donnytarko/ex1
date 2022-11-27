@@ -88,8 +88,8 @@ char RLEListGet(RLEList list, int index, RLEListResult *result) {
             *result = RLE_LIST_NULL_ARGUMENT;
         return (0);
     }
-    int i = 0;
-    RLEList currentList = list->next;
+    int i = -1;
+    RLEList currentList = list;
     while (i + currentList->repetitions < index) {
         if (currentList->next == NULL) {
             if (result)
