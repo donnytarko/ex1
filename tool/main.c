@@ -14,11 +14,16 @@ int main(int argc, char** argv) {
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
     fprintf(stdout, "kkki\n");
     RLEList list = asciiArtRead(inputFile);
+    fprintf(stdout, "%s\n", argv[1]);
+    fprintf(stdout, "%s\n", argv[2]);
+    fprintf(stdout, "%s\n", argv[3]);
+
     if (strcmp(argv[FLAG],"-e") == 0) {
         fprintf(stdout, "now we here\n");
         asciiArtPrintEncoded(list, outputFile);        
     }
     else {
+            fprintf(stdout, "iii");
         char buffer[CHUNK_SIZE];
         while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
             fprintf(stdout, "and now here\n");
