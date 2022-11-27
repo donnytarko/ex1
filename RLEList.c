@@ -5,6 +5,7 @@
 #include "RLEList.h"
 
 #define LINE_LENGTH 3
+#define NO_LETTER
 
 struct RLEList_t{
     int repetitions;
@@ -18,8 +19,7 @@ RLEList RLEListCreate(){
 		return NULL;
 	}
 	list->next = NULL;
-    list->repetitions = NULL;
-    list->letter = NULL;
+    list->repetitions = 0;
 	return list;
 }
 
