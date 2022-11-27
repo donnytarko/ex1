@@ -9,7 +9,7 @@
 #define OUTPUT_FILE 3
 
 int main(int argc, char** argv) {
-    printf("we up in here boiiii");
+    fprintf(stdout, "we up in here boiiii");
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
     RLEList list = asciiArtRead(inputFile);
