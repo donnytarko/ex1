@@ -3,7 +3,7 @@
 #include "RLEList.h"
 #include "AsciiArtTool.h"
 
-#define CHUNK_SIZE 2
+#define CHUNK_SIZE 256
 #define FLAG 1
 #define INPUT_FILE 2
 #define OUTPUT_FILE 3
@@ -23,9 +23,9 @@ int main(int argc, char** argv) {
         asciiArtPrintEncoded(list, outputFile);        
     }
     else {
-            fprintf(stdout, "iii");
-        char buffer[CHUNK_SIZE];
-        while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
+        fprintf(stdout, "iii\n");
+        //char buffer[CHUNK_SIZE];
+        /*while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
             fprintf(stdout, "and now here\n");
             for (int i = 0; i < CHUNK_SIZE; i++) {
                 if (buffer[i] == ' ') {
@@ -36,9 +36,14 @@ int main(int argc, char** argv) {
                 }
             }
             fputs(buffer, outputFile);
+        }*/
+        char buffer[CHUNK_SIZE];
+	    while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
+		    fputs(buffer, outputFile);
         }
     }
     fclose(inputFile);
     fclose(outputFile);
+    RLEListDestroy(list);
     return 0;
 }
