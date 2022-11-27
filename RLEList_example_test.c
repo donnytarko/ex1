@@ -88,7 +88,7 @@ char RLEListGet(RLEList list, int index, RLEListResult *result) {
         return (0);
     }
     int i = 0;
-    RLEList currentList = list;
+    RLEList currentList = list->next;
     while (i + currentList->repetitions < index) {
         if (currentList->next == NULL) {
             if (result)
