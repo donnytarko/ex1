@@ -3,7 +3,7 @@
 #include "RLEList.h"
 #include "AsciiArtTool.h"
 
-#define CHUNK_SIZE 256
+#define CHUNK_SIZE 2
 #define FLAG 1
 #define INPUT_FILE 2
 #define OUTPUT_FILE 3
