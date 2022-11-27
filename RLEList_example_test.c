@@ -123,6 +123,7 @@ RLEListResult RLEListRemove(RLEList list, int index) {
     }
     else {
         previousList->next = currentList->next;
+        free(currentList);
     }
     fprintf(stdout, "removing index: %d\n", index);
     return (RLE_LIST_SUCCESS);
