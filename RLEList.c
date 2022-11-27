@@ -101,7 +101,7 @@ RLEListResult RLEListRemove(RLEList list, int index) {
     }
     else {
         previousList->next = currentList->next;
-        free(currentList)
+        free(currentList);
     }
     return (RLE_LIST_SUCCESS);
 }
