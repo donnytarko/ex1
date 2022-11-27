@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "RLEList.h"
+#include "/home/mtm/public/2223a/ex1/RLEList.h"
 #include "AsciiArtTool.h"
 
 #define CHUNK_SIZE 2
