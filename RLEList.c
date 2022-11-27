@@ -107,14 +107,17 @@ RLEListResult RLEListRemove(RLEList list, int index) {
 }
 
 char* RLEListExportToString(RLEList list, RLEListResult* result) {
+        fprintf(stdout, "small pp\n");
     if (!list) {
         if (result)
             *result = RLE_LIST_NULL_ARGUMENT;
         return NULL;
     }
+    fprintf(stdout, "regular pp\n");
 
     int numberOfNodes = 0;
     RLEList currentList = list->next;
+        fprintf(stdout, "giant pp\n");
     while(list) {
         numberOfNodes++;
         currentList = currentList->next;
