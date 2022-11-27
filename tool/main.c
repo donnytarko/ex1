@@ -10,17 +10,13 @@
 
 int main(int argc, char** argv) {
     if (argc < 3) {
-        return (0);
+        return 0;
     }
+    
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
-    fprintf(stdout, "%c", argv[FLAG][1]);
-    fprintf(stdout, "%s", argv[FLAG]);
-    fprintf(stdout, "%c", 'e');
-    fprintf(stdout, "%s", "-e");
 
-
-    if (argv[FLAG][1] == 'e') {
+    if (strcmp(argv[1],"e") == 0) {
         RLEList list = asciiArtRead(inputFile);
         asciiArtPrintEncoded(list, outputFile);
         RLEListDestroy(list);        
