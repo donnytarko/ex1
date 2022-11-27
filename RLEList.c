@@ -112,19 +112,29 @@ char* RLEListExportToString(RLEList list, RLEListResult* result) {
             *result = RLE_LIST_NULL_ARGUMENT;
         return NULL;
     }
-    char* string = malloc(1);
-    int size = 0;
+
+    int numberOfNodes = 0;
+    RLEList currentList = list->next;
     while(list) {
-        string = realloc(string, size + LINE_LENGTH);
-        string[size] = list->letter;
-        string[size + 1] = '0' + list->repetitions;
-        strcat(string, "\n");
-        size += LINE_LENGTH;
-        list = list->next;
+        numberOfNodes++;
+        currentList = currentList->next;
+    }
+
+    char* string = malloc(numberOfNodes * (sizeof(int) + 2*(sizeof(char))) + sizeof(char));
+    if (!string) {
+        *result = RLE_LIST_OUT_OF_MEMORY;
+        return (0);
+    }
+    char oneLineTemp[sizeof(int) + 3*sizeof(char)];
+    currentList = list->next;
+    while(currentList) {
+        sprintf(oneLineTemp, "%c%d\n", currentList->letter, currentList->repetitions);
+        strcat(string, oneLineTemp);
+        currentList = currentList->next;
     }
     if (result)
         *result = RLE_LIST_SUCCESS;
-    return (string);
+    return string;
 }
 
 RLEListResult RLEListMap(RLEList list, MapFunction map_function) {
@@ -136,5 +146,5 @@ RLEListResult RLEListMap(RLEList list, MapFunction map_function) {
         }
         list = list->next;
     }
-    return (RLE_LIST_SUCCESS);
+    return RLE_LIST_SUCCESS;
 }
