@@ -12,6 +12,7 @@ int main(int argc, char** argv) {
     fprintf(stdout, "we up in here boiiii\n");
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
+    fprintf(stdout, "kkki\n");
     RLEList list = asciiArtRead(inputFile);
     if (strcmp(argv[FLAG],"-e") == 0) {
         fprintf(stdout, "now we here\n");
