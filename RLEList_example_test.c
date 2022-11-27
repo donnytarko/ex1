@@ -115,15 +115,14 @@ RLEListResult RLEListRemove(RLEList list, int index) {
             return (RLE_LIST_INDEX_OUT_OF_BOUNDS);
         }
         i += currentList->repetitions;
-        currentList = currentList->next;
         previousList = currentList;
+        currentList = currentList->next;
     }
     if (currentList->repetitions > 1) {
         currentList->repetitions--;
     }
     else {
         previousList->next = currentList->next;
-        free(currentList);
     }
     fprintf(stdout, "removing index: %d\n", index);
     return (RLE_LIST_SUCCESS);
