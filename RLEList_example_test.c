@@ -225,6 +225,12 @@ bool basicTest(){
         it=RLEListGet(list, i, NULL);
         fprintf(stdout, "it: %c\n", it);
         fprintf(stdout, "s[i]: %c\n", s[i]);
+    }
+    for(int i=0; i<RLEListSize(list); i++)
+    {
+        it=RLEListGet(list, i, NULL);
+        fprintf(stdout, "it: %c\n", it);
+        fprintf(stdout, "s[i]: %c\n", s[i]);
         ASSERT_TEST(it == s[i++], destroy);
     }
     //check if the length's are equal
