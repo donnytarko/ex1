@@ -68,8 +68,8 @@ RLEListResult RLEListAppend(RLEList list, char value) {
         newList->repetitions = 1;
         newList->next = NULL;
         currentList->next = newList;
-        fprintf(stdout, "appending: %c\n", value);
     }
+    fprintf(stdout, "appending: %c\n", value);
     return RLE_LIST_SUCCESS;
 }
 
@@ -124,6 +124,7 @@ RLEListResult RLEListRemove(RLEList list, int index) {
     else {
         previousList->next = currentList->next;
     }
+    fprintf(stdout, "removing index: %d\n", index);
     return (RLE_LIST_SUCCESS);
 }
 
