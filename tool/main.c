@@ -14,11 +14,13 @@ int main(int argc, char** argv) {
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
     RLEList list = asciiArtRead(inputFile);
     if (strcmp(argv[FLAG],"-e") == 0) {
+        fprintf(stdout, "now we here\n");
         asciiArtPrintEncoded(list, outputFile);        
     }
     else {
         char buffer[CHUNK_SIZE];
         while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
+            fprintf(stdout, "and now here\n");
             for (int i = 0; i < CHUNK_SIZE; i++) {
                 if (buffer[i] == ' ') {
                     buffer[i] = '@';
