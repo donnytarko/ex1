@@ -119,12 +119,13 @@ char* RLEListExportToString(RLEList list, RLEListResult* result) {
         numberOfNodes++;
         currentList = currentList->next;
     }
-
+    fprintf(stdout, "big pp now time\n");
     char* string = malloc(numberOfNodes * (sizeof(int) + 2*(sizeof(char))) + sizeof(char));
     if (!string) {
         *result = RLE_LIST_OUT_OF_MEMORY;
         return (0);
     }
+    fprintf(stdout, "big pp now time good time time\n");
     char oneLineTemp[sizeof(int) + 3*sizeof(char)];
     currentList = list->next;
     while(currentList) {

@@ -45,12 +45,15 @@ RLEListResult asciiArtPrintEncoded(RLEList list, FILE *out_stream){
     if (list == NULL || out_stream == NULL)
         return RLE_LIST_NULL_ARGUMENT;
     char* string = malloc(RLEListSize(list) + 1);
+    fprintf(stdout, "yy\n");
     if (!string) 
         return RLE_LIST_OUT_OF_MEMORY;
     RLEListResult *result = malloc(sizeof(RLEListResult));
+    fprintf(stdout, "big pp\n");
     if (!result) 
         return RLE_LIST_OUT_OF_MEMORY;
     string = RLEListExportToString(list, result);
+    fprintf(stdout, "big pp now\n");
     fputs(string, out_stream);
     free(string);
     return RLE_LIST_SUCCESS;
