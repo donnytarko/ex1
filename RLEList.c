@@ -36,7 +36,7 @@ RLEListResult RLEListAppend(RLEList list, char value) {
     while(currentList->next) {
         currentList = currentList->next;
     }
-    if (currentList->letter == value) {
+    if (currentList->letter == value && currentList->repetitions) {
         currentList->repetitions++;
     }
     else {
@@ -88,7 +88,7 @@ RLEListResult RLEListRemove(RLEList list, int index) {
     int i = -1;
     RLEList currentList = list;
     RLEList previousList;
-    while (i + currentList->repetitions < index) {
+    while (!(currentList->repetitions) || i + currentList->repetitions < index) {
         if (currentList->next == NULL) {
             return (RLE_LIST_INDEX_OUT_OF_BOUNDS);
         }
