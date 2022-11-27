@@ -85,8 +85,8 @@ char RLEListGet(RLEList list, int index, RLEListResult *result) {
 RLEListResult RLEListRemove(RLEList list, int index) {
     if (!list)
         return (RLE_LIST_NULL_ARGUMENT);
-    int i = 0;
-    RLEList currentList = list->next;
+    int i = -1;
+    RLEList currentList = list;
     RLEList previousList;
     while (i + currentList->repetitions < index) {
         if (currentList->next == NULL) {
