@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-#include "RLEList.h"
+#include "../RLEList.h"
 
 RLEList asciiArtRead(FILE* in_stream);
 
