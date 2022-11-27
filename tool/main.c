@@ -11,8 +11,8 @@
 int main(int argc, char** argv) {
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
-    fprintf(stdout, "flag is %s\n", argv[FLAG]);
-    if (strcmp(argv[FLAG],"-e") == 0) {
+    
+    if (!strcmp(argv[FLAG],"-e")) {
         RLEList list = asciiArtRead(inputFile);
         asciiArtPrintEncoded(list, outputFile);
         RLEListDestroy(list);        
