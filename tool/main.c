@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "RLEList.h"
 #include "AsciiArtTool.h"
 
@@ -11,18 +12,18 @@ int main(int argc, char** argv) {
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
     RLEList list = asciiArtRead(inputFile);
-    if (argv[FLAG] == "-e") {
+    if (strcmp(argv[FLAG],"-e") == 0) {
         asciiArtPrintEncoded(list, outputFile);        
     }
     else {
         char buffer[CHUNK_SIZE];
         while (fgets(buffer, CHUNK_SIZE, inputFile) != NULL) {
             for (int i = 0; i < CHUNK_SIZE; i++) {
-                if (strcmp(buffer[i]," ")) {
-                    &buffer[i] = "@";
+                if (buffer[i] == ' ') {
+                    buffer[i] = '@';
                 }
-                else if (strcmp(buffer[i],"@")) {
-                    &buffer[i] = " ";
+                else if (buffer[i] == '@') {
+                    buffer[i] = ' ';
                 }
             }
             fputs(buffer, outputFile);
