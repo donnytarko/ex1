@@ -18,6 +18,8 @@ RLEList RLEListCreate(){
 		return NULL;
 	}
 	list->next = NULL;
+    list->repetitions = NULL;
+    list->letter = NULL;
 	return list;
 }
 
