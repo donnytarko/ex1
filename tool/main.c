@@ -9,6 +9,9 @@
 #define OUTPUT_FILE 3
 
 int main(int argc, char** argv) {
+    if (argc < 3) {
+        return (0);
+    }
     FILE* inputFile = fopen(argv[INPUT_FILE], "r");
     FILE* outputFile = fopen(argv[OUTPUT_FILE], "w");
     fprintf(stdout, "%c", argv[FLAG][1]);
