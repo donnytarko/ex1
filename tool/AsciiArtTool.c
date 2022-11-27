@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "AsciiArtTool.h"
+#include "../RLEList.h"
 
 #define CHUNK_SIZE 2
 
