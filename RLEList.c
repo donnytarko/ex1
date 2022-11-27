@@ -107,28 +107,23 @@ RLEListResult RLEListRemove(RLEList list, int index) {
 }
 
 char* RLEListExportToString(RLEList list, RLEListResult* result) {
-        fprintf(stdout, "small pp\n");
     if (!list) {
         if (result)
             *result = RLE_LIST_NULL_ARGUMENT;
         return NULL;
     }
-    fprintf(stdout, "regular pp\n");
 
     int numberOfNodes = 0;
     RLEList currentList = list->next;
-        fprintf(stdout, "giant pp\n");
     while(currentList) {
         numberOfNodes++;
         currentList = currentList->next;
     }
-    fprintf(stdout, "big pp now time\n");
     char* string = malloc(numberOfNodes * (sizeof(int) + 2*(sizeof(char))) + sizeof(char));
     if (!string) {
         *result = RLE_LIST_OUT_OF_MEMORY;
         return (0);
     }
-    fprintf(stdout, "big pp now time good time time\n");
     char oneLineTemp[sizeof(int) + 3*sizeof(char)];
     currentList = list->next;
     while(currentList) {
